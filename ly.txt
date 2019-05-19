@@ -1,0 +1,10 @@
+﻿set names utf8;
+drop database if exists ly;
+create database ly charset=utf8;
+use ly;
+create table ly(
+id int primary key auto_increment,
+date varchar(32),
+uname varchar(32),
+content varchar(255)
+);

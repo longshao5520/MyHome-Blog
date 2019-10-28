@@ -27,8 +27,7 @@ router.post('/addMessage', urlencodedParser, async function(req, res, next) {
   var username = req.body.name;
   var lyConten = req.body.lyConten;
   var date = new Date();
-  var day = date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDate() + "日" + date.getHours() + "时" + date.getMinutes() + "分" + date.getSeconds() + "秒"
-  console.log(username, lyConten, day)
+  var day = date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDate() + "日" + date.getHours() + "时" + date.getMinutes() + "分" + date.getSeconds() + "秒";
   var addsql = "INSERT INTO ly(uname,content,date) VALUES(?,?,?);";
   var addSqlParams = [username, lyConten, day];
   connection.query(addsql, addSqlParams, function(error, results) {

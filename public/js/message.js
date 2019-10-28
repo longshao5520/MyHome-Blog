@@ -9,7 +9,7 @@ function messagelist() {
   } else {
     xhr = new ActiveXObject('Microsoft.XMLHTTP');
   }
-  xhr.open("get", "http://127.0.0.1/api/messageList", true);
+  xhr.open("get", "http://yql520.com/api/messageList", true);
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       var data = xhr.responseText;
@@ -42,13 +42,20 @@ function messagelist() {
   xhr.send();
 }
 
+function isNull(str) {
+  if (str == "") return true;
+  var regu = "^[ ]+$";
+  var re = new RegExp(regu);
+  return re.test(str);
+}
+
 function addmessage() {
   var name = document.getElementById('username').value;
   var lyConten = document.getElementById('lyConten').value;
-  if (name == '') {
+  if (isNull(name)) {
     alert('署名不能为空');
   } else {
-    if (lyConten == '') {
+    if (isNull(lyConten)) {
       alert('留言内容不能为空');
     } else {
       var xhr = null;
@@ -57,7 +64,7 @@ function addmessage() {
       } else {
         xhr = new ActiveXObject('Microsoft.XMLHTTP');
       }
-      xhr.open("post", "http://127.0.0.1/api/addMessage", "true");
+      xhr.open("post", "http://yql520.com/api/addMessage", "true");
       xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
       xhr.send("name=" + name + "&lyConten=" + lyConten);
       xhr.onreadystatechange = function() {

@@ -1,0 +1,22 @@
+/* #loginBox {
+    display: none;
+} */
+
+#loginBox input {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+#registerBox {
+    display: none;
+}
+
+#registerBox input {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+/* #userInfo {
+    display: none;
+} */

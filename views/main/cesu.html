@@ -3,7 +3,11 @@
 <html lang="zh-cn">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="SHORCOT ICON" href="/public/img/头像.png">
+  <!-- <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
 
   <title>键盘速度测试</title>
   <link rel="stylesheet" href="/public/css/bootstrap.min.css">
@@ -40,58 +44,57 @@
       </div>
     </div>
   </nav>
-  <div id="container">
-    <div class="left-side">
-      <p class="setting">
-        <label for="">请选择打字内容：</label>
-        <select id="selCourse">
-        <option value="0">HTML</option>
-        <option value="1">CSS</option>
-        <option value="2">MYSQL</option>
-        <option value="3">JS</option>
-      </select>
-      </p>
-      <p class="setting">
-        <label for="">每行显示几个单词：</label>
-        <input type="number" id="txtNum" value="5">
-      </p>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12" style="margin-top: 60px;">
+        <div class="col-sm-4 col-sm-offset-2">
+          <p class="setting">
+            <label for="">请选择打字内容：</label>
+            <select id="selCourse">
+                <option value="0">HTML</option>
+                <option value="1">CSS</option>
+                <option value="2">MYSQL</option>
+                <option value="3">JS</option>
+              </select>
+          </p>
+          <p class="setting">
+            每行显示几个单词：
+            <input class="form-control" type="number" id="txtNum" value="5">
+          </p>
 
-      <p class="setting">
-        <label for="">共测试几行：</label>
-        <input type="number" id="txtLine" value="5">
-      </p>
+          <p class="setting">
+            共测试几行：
+            <input class="form-control" type="number" id="txtLine" value="5">
+          </p>
 
-      <p class="setting">
-        <button type="button" id="btnStart">开始测试</button>
-        <!--<button type="button" id="btnStop">结束测试</button>-->
-      </p><pre>	  用TAB键切换到下一行的输入框和“结束按钮”，
-	  用空格键点击“结束按钮”——测试全程不要用动鼠标——否则会影响自己的键速
-	  </pre>
-      <p></p>
-      <!-- <p>
-	 
-	</p> -->
-    </div>
-    <div class="right-side">
-      <p>
-        <span>耗时：</span>
-        <b id="time"></b>
-      </p>
+          <p class="setting">
+            <button type="button" id="btnStart">开始测试</button>
+          </p>
+        </div>
+        <div class="col-sm-4">
+          <pre class="col-sm-12 hidden-sm">用TAB键切换到下一行的输入框和“结束按钮”，<br/>用空格键点击“结束按钮”<br/>测试全程不要用动鼠标<br/>否则会影响自己的键速</pre>
+          <p>
+            <span>耗时：</span>
+            <b id="time"></b>
+          </p>
 
-      <p>
-        <span>正确率：</span>
-        <b id="correct"></b>
-      </p>
+          <p>
+            <span>正确率：</span>
+            <b id="correct"></b>
+          </p>
 
-      <p>
-        <span>击键速度：</span>
-        <b id="avgSpeed"></b>
-      </p>
-    </div>
-    <div id="content" style="clear:both;">
+          <p>
+            <span>击键速度：</span>
+            <b id="avgSpeed"></b>
+          </p>
+        </div>
+        <div class="col-sm-12" id="content">
 
+        </div>
+      </div>
     </div>
   </div>
+
 
 </body>
 

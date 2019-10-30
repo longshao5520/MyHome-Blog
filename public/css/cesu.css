@@ -53,17 +53,17 @@
   margin-top: 20px;
 }
 
-#container div.right-side {
+.right-side {
   float: left;
   margin-left: 35px;
 }
 
-#container div.right-side span {
+.right-side span {
   display: inline-block;
   width: 100px;
   text-align: right;
 }
 
-#container div.right-side b {
+b {
   color: #ff0000;
 }

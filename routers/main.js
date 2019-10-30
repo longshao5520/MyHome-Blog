@@ -14,4 +14,8 @@ router.get('/message', function(req, res, next) {
   res.render('main/message');
 });
 
+router.get('/cesu', function(req, res, next) {
+  res.render('main/cesu');
+});
+
 module.exports = router;

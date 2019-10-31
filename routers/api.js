@@ -14,12 +14,14 @@ var urlencodedParser = bodyParser.urlencoded({ extended: true })
 connection.connect();
 
 router.get('/messageList', function(req, res, next) {
-
+  //connection.connect();
   var sql = "SELECT * FROM ly";
   connection.query(sql, function(error, results) {
     if (error) throw error;
     res.json(results);
+    //connection.end();
   });
+  
 });
 
 router.post('/addMessage', urlencodedParser, async function(req, res, next) {
@@ -27,13 +29,16 @@ router.post('/addMessage', urlencodedParser, async function(req, res, next) {
   var username = req.body.name;
   var lyConten = req.body.lyConten;
   var date = new Date();
-  var day = date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDate() + "日" + date.getHours() + "时" + date.getMinutes() + "分" + date.getSeconds() + "秒";
+  var day = date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDate() + "日" + date.getHours() + "时" + date.getMinutes() + "分";
+  //connection.connect();
   var addsql = "INSERT INTO ly(uname,content,date) VALUES(?,?,?);";
   var addSqlParams = [username, lyConten, day];
   connection.query(addsql, addSqlParams, function(error, results) {
     if (error) throw error;
     res.json('OK');
+    //connection.end();
   });
+  
 });
 
 module.exports = router;

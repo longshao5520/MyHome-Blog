@@ -27,6 +27,7 @@ router.use(function(req, res, next) {
 });
 
 router.get('/messageList', function(req, res, next) {
+<<<<<<< HEAD
   db.pool.getConnection(function(err, connection) {
     var sql = "SELECT * FROM ly;";
     connection.query(sql, function(err, result) {
@@ -34,7 +35,16 @@ router.get('/messageList', function(req, res, next) {
       res.json(result);
       connection.release();
     });
+=======
+  //connection.connect();
+  var sql = "SELECT * FROM ly";
+  connection.query(sql, function(error, results) {
+    if (error) throw error;
+    res.json(results);
+    //connection.end();
+>>>>>>> 3a3384a39466a5d6544001eb847d2ca75ccf7804
   });
+  
 });
 
 router.post('/addMessage', urlencodedParser, function(req, res, next) {
@@ -42,6 +52,7 @@ router.post('/addMessage', urlencodedParser, function(req, res, next) {
   var username = req.body.name;
   var lyConten = req.body.lyConten;
   var date = new Date();
+<<<<<<< HEAD
   var day = date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDate() + "日" + date.getHours() + "时" + date.getMinutes() + "分" + date.getSeconds() + "秒";
   db.pool.getConnection(function(err, connection) {
     var sql = "INSERT INTO ly(uname,content,date) VALUES(?,?,?);";
@@ -99,7 +110,18 @@ router.post('/addBlog', urlencodedParser, async function(req, res, next) {
     });
     res.json('OK');
     connection.release();
+=======
+  var day = date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDate() + "日" + date.getHours() + "时" + date.getMinutes() + "分";
+  //connection.connect();
+  var addsql = "INSERT INTO ly(uname,content,date) VALUES(?,?,?);";
+  var addSqlParams = [username, lyConten, day];
+  connection.query(addsql, addSqlParams, function(error, results) {
+    if (error) throw error;
+    res.json('OK');
+    //connection.end();
+>>>>>>> 3a3384a39466a5d6544001eb847d2ca75ccf7804
   });
+  
 });
 
 

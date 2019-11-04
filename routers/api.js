@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const fs = require('fs');
+const path = require('path');
 const router = express.Router();
 const db = require('../db/database');
 
@@ -85,24 +86,34 @@ router.post('/addBlog', urlencodedParser, async function(req, res, next) {
       if (err) throw err;
       connection.release();
     });
-    var sql = "INSERT INTO blog(blog_name,blog_lable,blog_abs,blog_time) VALUES(?,?,?,?);";
-    var addSqlParams = [blogName, blogLable, blogAbs, day];
-  });
-  res.end();
-  connection.query(sql, addSqlParams, function(err, result) {
-    if (err) throw err;
-    fs.writeFile('../public/blog/' + result.blog_id + '.md', blogCon, function(error) {
-      if (error) {
-        console.log('写入失败')
-      } else {
-        console.log('写入成功')
-      }
+    var sql = "SELECT * from blog WHERE blog_name=?;";
+    var addSqlParams = [blogName];
+    connection.query(sql, addSqlParams, function(err, result) {
+      if (err) throw err;
+      // console.log(result)
+      results = JSON.stringify(result)
+      result = JSON.parse(results)
+      fs.writeFile(path.join(__dirname, '../public/blog/' + result[0].id + '.md'), blogCon, function(error) {
+        if (error) {
+          console.log(error)
+        } else {
+          console.log('写入成功');
+          res.send("OK");
+        }
+      });
     });
-    res.json('OK');
-    connection.release();
-
   });
+});
 
+router.get('/blogList', function(req, res, next) {
+  db.pool.getConnection(function(err, connection) {
+    var sql = "SELECT * FROM blog;";
+    connection.query(sql, function(err, result) {
+      if (err) throw err;
+      res.json(result);
+      connection.release();
+    });
+  });
 });
 
 

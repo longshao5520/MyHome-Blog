@@ -1,22 +1,48 @@
-/* #loginBox {
-    display: none;
-} */
-
-#loginBox input {
-    margin-top: 5px;
-    margin-bottom: 5px;
+#blogList {
+  text-align: left;
+  margin-top: 20px;
+  border-top: solid 1px #9d9d9d;
+  /* background-color: #9d9d9d; */
+  /* background-color: #9d9d9d; */
+  /* margin-bottom: 80px; */
+  /* padding: 0 30px; */
 }
 
-#registerBox {
-    display: none;
+.advertising div {
+  /* border-radius: 6px; */
+  padding: 0 10px 0 10px;
+  /* border: solid 1px ; */
 }
 
-#registerBox input {
-    margin-top: 5px;
-    margin-bottom: 5px;
+.listDiv {
+  height: 120px;
+  padding: 5px;
+  /* border-bottom: solid 1px #9d9d9d; */
 }
 
+.spen {
+  padding-left: 2em;
+}
 
-/* #userInfo {
-    display: none;
-} */
+.date {
+  text-align: right;
+}
+
+a:link {
+  color: #212529;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #212529;
+  text-decoration: line-through;
+}
+
+a:hover {
+  color: #ff006e;
+  text-decoration: none;
+}
+
+a:active {
+  color: #212529;
+}

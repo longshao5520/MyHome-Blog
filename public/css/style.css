@@ -1,150 +1,135 @@
 .navbar-default img {
-    width: 100%;
+  width: 100%;
 }
 
 html {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    height: 80%;
+  height: 80%;
 }
 
 .navbar-brand {
-    padding: 0px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 5px;
-    line-height: 50px;
-    width: 5%;
+  padding: 0px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  line-height: 50px;
+  width: 5%;
 }
 
 .main {
-    text-align: center;
+  text-align: center;
 }
 
 .main p {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 .bottom {
-    background: #222;
-    /*background: #343a40 ;*/
-    height: 80px;
-    text-align: center;
-    line-height: 20px;
-    color: rgba(255, 255, 255, 0.5);
-    padding-top:10px;
+  background: #222;
+  /*background: #343a40 ;*/
+  height: 80px;
+  text-align: center;
+  line-height: 20px;
+  color: rgba(255, 255, 255, 0.5);
+  padding-top: 10px;
 }
 
 .head {
-    position: absolute;
-    z-index: 1;
-    height: 100%;
-    width: 100%;
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
 }
 
 .null {
-    width: 100%;
-    height: 35%;
+  width: 100%;
+  height: 35%;
 }
 
 .headPortrait {
-    margin: 0 auto;
-    width: 10%;
-    min-width: 150px;
-    height: auto;   
+  margin: 0 auto;
+  width: 10%;
+  min-width: 150px;
+  height: auto;
 }
 
 .logo {
-    -webkit-animation: haha1 10s linear infinite;
+  -webkit-animation: haha1 10s linear infinite;
 }
 
 @-webkit-keyframes haha1 {
-    0% {
-        -webkit-transform: rotate(0deg);
-    }
-    25% {
-        -webkit-transform: rotate(90deg);
-    }
-    50% {
-        -webkit-transform: rotate(180deg);
-    }
-    75% {
-        -webkit-transform: rotate(270deg);
-    }
-    100% {
-        -webkit-transform: rotate(360deg);
-    }
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  25% {
+    -webkit-transform: rotate(90deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+  }
+  75% {
+    -webkit-transform: rotate(270deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 .domainName {
-    width: 14%;
-    min-width: 200px;
-    margin: 30px auto;
+  width: 14%;
+  min-width: 200px;
+  margin: 30px auto;
 }
 
 .domainName img {
-    width: 100%;
+  width: 100%;
 }
 
 .nav-logo {
-    float: left;
-    width: 40px;
-    height: 50px;
-    margin-right: 10px;
-    overflow: hidden;
+  float: left;
+  width: 40px;
+  height: 50px;
+  margin-right: 10px;
+  overflow: hidden;
 }
 
 .nav-logo a {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-logo img {
-    float: left;
-    width: 100%;
-    margin-top: 5px;
-    overflow: hidden;
+  float: left;
+  width: 100%;
+  margin-top: 5px;
+  overflow: hidden;
 }
 
 .form-horizontal {
-    margin: 70px;
+  margin: 70px;
 }
 
 .showMore {
-    text-align: left;
-    border: 1px solid #CCC;
-    padding: 10px;
-    margin-bottom: 10px;
+  text-align: left;
+  border: 1px solid #CCC;
+  padding: 10px;
+  margin-bottom: 10px;
 }
 
 .row {
-    margin-bottom: 80px;
+  margin-bottom: 80px;
 }
 
 .panel-body {
-    text-align: left;
-}
-#audioBox{
-    position: absolute;
-    top: 1%;
-    right: 1%;
-    z-index: 1;
+  text-align: left;
 }
 
-.csdn a:link{
-    color: #212529;
-    text-decoration: none;
-}
-.csdn a:visited {
-    color: #212529;
-    text-decoration: line-through;
-}
-.csdn a:hover {
-    color: #ff006e;
-    text-decoration: none;
-}
-.csdn a:active {
-    color: #212529;
+#audioBox {
+  position: absolute;
+  top: 1%;
+  right: 1%;
+  z-index: 1;
 }

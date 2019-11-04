@@ -5,7 +5,7 @@ function isNull(str) {
   return re.test(str);
 }
 
-function addmessage() {
+function addblog() {
   var blogName = document.getElementById('blogName').value;
   var blogLable = document.getElementById('blogLable').value;
   var blogAbs = document.getElementById('blogAbs').value;
@@ -35,12 +35,14 @@ function addmessage() {
             if (xhr.readyState == 4 && xhr.status == 200) {
               var data = xhr.responseText;
               if (data) {
-                alert("留言成功！");
+                alert("发布成功！");
                 window.location.reload(true);
-                document.getElementById("username").value = null;
-                document.getElementById("lyConten").value = null;
+                document.getElementById('blogName').value = null;
+                document.getElementById('blogLable').value = null;
+                document.getElementById('blogAbs').value = null;
+                document.getElementById('blogCon').value = null;
               } else {
-                alert('留言失败！');
+                alert('发布失败！');
               }
             }
           }

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="SHORCOT ICON" href="/public/img/头像.png">
+  <title>新建文章 - 微薄的青春ゝ</title>
+  <link rel="stylesheet" href="/public/css/bootstrap.min.css">
+  <script src="/public/js/jquery-3.3.1.min.js "></script>
+  <script src="/public/js/bootstrap.min.js "></script>
+  <script src="/public/js/script.js"></script>
+  <script src="/public/js/addBlog.js"></script>
+</head>
+
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/admin">后台管理</a>
+      </div>
+      <div>
+        <ul class="nav navbar-nav">
+          <li><a href="/admin">首页</a></li>
+          <li class="active"><a href="/admin/addBlog">新建文章</a></li>
+          <li><a href="/admin/blogList">文章管理</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="col-sm-8 col-sm-offset-2" style="padding-top: 100px;">
+    <div class="col-sm-6">
+      <p style="float:left;">文章名字：</p>
+      <input type="text" name="blogName" class="form-control" id="blogName" maxlength="50">
+    </div>
+    <div class="col-sm-6">
+      <p style="float:left;">文章标签：</p>
+      <input type="text" name="blogLable" class="form-control" id="blogLable" maxlength="50">
+    </div>
+    <div class="col-sm-12">
+      <p style="float:left;">文章摘要：</p>
+      <textarea name="blogAbs" id="blogAbs" cols="3000" rows="1" class="form-control" style="resize:none"></textarea>
+    </div>
+    <div class="col-sm-12">
+      <p style="float:left;">文章内容：</p>
+      <textarea name="blogCon" id="blogCon" cols="3000" rows="30" class="form-control" style="resize:none"></textarea>
+    </div>
+  </div>
+
+  <div id="audioBox">
+  </div>
+</body>
+
+</html>

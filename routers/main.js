@@ -6,7 +6,6 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/blog', function(req, res, next) {
-
   res.render('main/blog');
 });
 
@@ -17,5 +16,6 @@ router.get('/message', function(req, res, next) {
 router.get('/cesu', function(req, res, next) {
   res.render('main/cesu');
 });
+
 
 module.exports = router;

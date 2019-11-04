@@ -1,0 +1,19 @@
+/*手机*/
+
+@media screen and (min-width: 320px) and (max-width: 750px) {
+  .container img {
+    width: 80%;
+  }
+}
+
+pre {
+  padding: 0px;
+}
+
+body {
+  padding-top: 70px;
+}
+
+#doc-page {
+  margin-bottom: 100px;
+}

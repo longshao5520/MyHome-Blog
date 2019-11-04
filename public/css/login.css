@@ -1,0 +1,71 @@
+.head {
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+}
+
+.null {
+  width: 100%;
+  height: 100%;
+}
+
+.headPortrait {
+  margin: 0 auto;
+  width: 10%;
+  min-width: 0px;
+  height: auto;
+  min-height: 0px;
+}
+
+.logo {
+  -webkit-animation: haha1 10s linear infinite;
+  min-width: 0px;
+}
+
+@-webkit-keyframes haha1 {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  25% {
+    -webkit-transform: rotate(90deg);
+  }
+  50% {
+    -webkit-transform: rotate(180deg);
+  }
+  75% {
+    -webkit-transform: rotate(270deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+.domainName {
+  width: 14%;
+  min-width: 200px;
+  margin: 30px auto;
+}
+
+.domainName img {
+  width: 100%;
+}
+
+.loginBox {
+  padding-top: 10%;
+}
+
+.loginBox input {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.bottom {
+  background: #222;
+  /*background: #343a40 ;*/
+  height: 80px;
+  text-align: center;
+  line-height: 20px;
+  color: rgba(255, 255, 255, 0.5);
+  padding-top: 10px;
+}

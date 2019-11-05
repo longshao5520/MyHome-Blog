@@ -11,6 +11,7 @@
   <script src="/public/js/jquery-3.3.1.min.js "></script>
   <script src="/public/js/bootstrap.min.js "></script>
   <script src="/public/js/script.js"></script>
+  <script src="/public/js/logout.js"></script>
   <script src="/public/js/addBlog.js"></script>
 </head>
 
@@ -24,7 +25,9 @@
         <ul class="nav navbar-nav">
           <li><a href="/admin">首页</a></li>
           <li class="active"><a href="/admin/addBlog">新建文章</a></li>
-          <li><a href="/admin/blogList">文章管理</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right" style="margin-top: 10px;">
+          <li><button class="btn btn-info" onclick="logout()">退出</button></li>
         </ul>
       </div>
     </div>

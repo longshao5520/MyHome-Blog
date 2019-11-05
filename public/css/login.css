@@ -1,58 +1,32 @@
-.head {
+body {
+  background: url(https://tutut.oss-cn-hangzhou.aliyuncs.com/img/%E6%B1%9F%E5%8D%97%E7%83%A7%E9%85%924k%E5%8A%A8%E6%BC%AB%E5%A3%81%E7%BA%B8_%E5%BD%BC%E5%B2%B8%E5%9B%BE%E7%BD%91.jpg) no-repeat;
+  background-size: cover;
+}
+
+.login {
+  text-align: center;
   position: absolute;
-  z-index: 1;
-  height: 100%;
-  width: 100%;
-}
-
-.null {
-  width: 100%;
-  height: 100%;
-}
-
-.headPortrait {
-  margin: 0 auto;
-  width: 10%;
-  min-width: 0px;
-  height: auto;
-  min-height: 0px;
-}
-
-.logo {
-  -webkit-animation: haha1 10s linear infinite;
-  min-width: 0px;
-}
-
-@-webkit-keyframes haha1 {
-  0% {
-    -webkit-transform: rotate(0deg);
-  }
-  25% {
-    -webkit-transform: rotate(90deg);
-  }
-  50% {
-    -webkit-transform: rotate(180deg);
-  }
-  75% {
-    -webkit-transform: rotate(270deg);
-  }
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
-}
-
-.domainName {
-  width: 14%;
-  min-width: 200px;
-  margin: 30px auto;
-}
-
-.domainName img {
-  width: 100%;
+  left: 50%;
+  top: 50%;
+  width: 400px;
+  margin-left: -200px;
+  margin-top: -200px;
+  background-color: white;
+  vertical-align: middle;
+  opacity: 0.9;
 }
 
 .loginBox {
   padding-top: 10%;
+  padding-bottom: 10%;
+}
+
+.headPortrait {
+  margin: 0 auto;
+  width: 25%;
+  min-width: 0px;
+  height: auto;
+  min-height: 0px;
 }
 
 .loginBox input {

@@ -1,10 +1,9 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
-const router = express.Router();
+const bodyParser = require('body-parser');
 const db = require('../db/database');
-
+const router = express.Router();
 
 var responseJSON = function(res, ret) {
   if (typeof ret === 'undefined') {
@@ -17,16 +16,7 @@ var responseJSON = function(res, ret) {
   }
 };
 
-var urlencodedParser = bodyParser.urlencoded({ extended: true })
-
-router.use(function(req, res, next) {
-  responseData = {
-    code: 0,
-    message: ''
-  }
-  next();
-});
-
+//拉取留言列表
 router.get('/messageList', function(req, res, next) {
   db.pool.getConnection(function(err, connection) {
     var sql = "SELECT * FROM ly;";
@@ -36,9 +26,31 @@ router.get('/messageList', function(req, res, next) {
       connection.release();
     });
   });
-
 });
 
+//拉取文章列表
+router.get('/blogList', function(req, res, next) {
+  db.pool.getConnection(function(err, connection) {
+    var sql = "SELECT * FROM blog;";
+    connection.query(sql, function(err, result) {
+      if (err) throw err;
+      res.json(result);
+      connection.release();
+    });
+  });
+});
+
+var urlencodedParser = bodyParser.urlencoded({ extended: true });
+
+router.use(function(req, res, next) {
+  responseData = {
+    code: 0,
+    message: ''
+  }
+  next();
+});
+
+//添加留言
 router.post('/addMessage', urlencodedParser, function(req, res, next) {
   res.setHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
   var username = req.body.name;
@@ -56,20 +68,7 @@ router.post('/addMessage', urlencodedParser, function(req, res, next) {
   });
 });
 
-router.post('/login', urlencodedParser, async function(req, res, next) {
-  res.setHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-  var username = req.body.username;
-  var password = req.body.password;
-
-  if (username == 'longshao' && password == 'weiai123.') {
-    responseData.code = 1;
-    responseData.message = '登录成功';
-    res.json(responseData);
-    return;
-  }
-  res.end();
-});
-
+//添加留言
 router.post('/addBlog', urlencodedParser, async function(req, res, next) {
   res.setHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
   var blogName = req.body.blogName;
@@ -104,18 +103,6 @@ router.post('/addBlog', urlencodedParser, async function(req, res, next) {
     });
   });
 });
-
-router.get('/blogList', function(req, res, next) {
-  db.pool.getConnection(function(err, connection) {
-    var sql = "SELECT * FROM blog;";
-    connection.query(sql, function(err, result) {
-      if (err) throw err;
-      res.json(result);
-      connection.release();
-    });
-  });
-});
-
 
 module.exports = router;
 // 删除文件

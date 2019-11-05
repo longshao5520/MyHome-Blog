@@ -28,7 +28,7 @@ function addblog() {
           } else {
             xhr = new ActiveXObject('Microsoft.XMLHTTP');
           }
-          xhr.open("post", "http://127.0.0.1/api/addBlog", "true");
+          xhr.open("post", "http://yql520.com/api/addBlog", "true");
           xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
           xhr.send("blogName=" + blogName + "&blogLable=" + blogLable + "&blogAbs=" + blogAbs + "&blogCon=" + blogCon);
           xhr.onreadystatechange = function() {

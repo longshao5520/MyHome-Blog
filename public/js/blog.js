@@ -10,7 +10,7 @@ function blogList() {
   } else {
     xhr = new ActiveXObject('Microsoft.XMLHTTP');
   }
-  xhr.open("get", "http://127.0.0.1/api/blogList", true);
+  xhr.open("get", "http://yql520.com/api/blogList", true);
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       var data = xhr.responseText;

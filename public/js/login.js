@@ -8,7 +8,7 @@ function login() {
   } else {
     xhr = new ActiveXObject('Microsoft.XMLHTTP');
   }
-  xhr.open("post", "http://127.0.0.1/admin/login", "true");
+  xhr.open("post", "http://yql520.com/admin/login", "true");
   xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
   xhr.send("username=" + uname + "&password=" + passwd);
   xhr.onreadystatechange = function() {

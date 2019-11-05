@@ -9,7 +9,7 @@ function messagelist() {
   } else {
     xhr = new ActiveXObject('Microsoft.XMLHTTP');
   }
-  xhr.open("get", "http://127.0.0.1/api/messageList", true);
+  xhr.open("get", "http://yql520.com/api/messageList", true);
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200) {
       var data = xhr.responseText;
@@ -64,7 +64,7 @@ function addmessage() {
       } else {
         xhr = new ActiveXObject('Microsoft.XMLHTTP');
       }
-      xhr.open("post", "http://127.0.0.1/api/addMessage", "true");
+      xhr.open("post", "http://yql520.com/api/addMessage", "true");
       xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
       xhr.send("name=" + name + "&lyConten=" + lyConten);
       xhr.onreadystatechange = function() {

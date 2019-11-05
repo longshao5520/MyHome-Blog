@@ -5,7 +5,7 @@ function logout() {
   } else {
     xhr = new ActiveXObject('Microsoft.XMLHTTP');
   }
-  xhr.open("get", "http://127.0.0.1/admin/logout", "true");
+  xhr.open("get", "http://yql520.com/admin/logout", "true");
   xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
   xhr.onreadystatechange = function() {
     if (xhr.readyState == 4 && xhr.status == 200) {

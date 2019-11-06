@@ -10,11 +10,15 @@
   <link rel="stylesheet" href="/public/css/bootstrap.min.css">
   <link rel="stylesheet" href="/public/css/blog.css">
   <script src="/public/js/jquery-3.3.1.min.js "></script>
-  <script src="/public/js/jquery.cookie.js "></script>
   <script src="/public/js/bootstrap.min.js "></script>
-  <script src="/public/js/script.js"></script>
-  <script src="/public/js/logout.js"></script>
-
+  <script src="/public/js/admin.js"></script>
+  <script>
+    function jump1(Id) {
+      id = Id;
+      url = "/admin/modifyBlog?id=" + id; //此处拼接内容
+      window.location.href = url;
+    }
+  </script>
 </head>
 
 <body>
@@ -37,7 +41,9 @@
   <div class="container" style="padding-top:60px">
     <div class="row">
       <div id="blogList">
-        <script src="/public/js/blog.js"></script>
+        <script>
+          adminBlogList();
+        </script>
       </div>
     </div>
   </div>

@@ -46,6 +46,11 @@ router.post('/login', urlencodedParser, async function(req, res, next) {
     responseData.message = '登录成功';
     res.json(responseData);
     return;
+  } else {
+    responseData.code = 0;
+    responseData.message = '账号或密码错误';
+    res.json(responseData);
+    return;
   }
   res.end();
 });
@@ -75,6 +80,9 @@ router.use(function(req, res, next) {
         });
         router.get('/blogList', function(req, res, next) {
           res.render('admin/blogList');
+        });
+        router.get('/modifyBlog', function(req, res, next) {
+          res.render('admin/modify');
         });
       } else {
         // router.get('/login', function(req, res, next) {

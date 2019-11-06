@@ -30,6 +30,8 @@ function login() {
           if (n_data.code == 1) {
             alert(n_data.message)
             window.location.href = '/admin';
+          } else {
+            alert(n_data.message)
           }
         }
       }
@@ -155,6 +157,57 @@ function blogList() {
   xhr.send();
 }
 
+function adminBlogList() {
+  var div = document.getElementById("blogList");
+  var blogID = Array();
+  var blogName = Array();
+  var blogLable = Array();
+  var blogAbs = Array();
+  var blogTime = Array();
+  if (window.XMLHttpRequest) {
+    xhr = new XMLHttpRequest();
+  } else {
+    xhr = new ActiveXObject('Microsoft.XMLHTTP');
+  }
+  xhr.open("get", "http://localhost/api/blogList", true);
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      var data = xhr.responseText;
+      var message = JSON.parse(data)
+      for (var i = message.length - 1; i >= 0; i--) {
+        blogID[i] = message[i].id;
+        blogName[i] = message[i].blog_name;
+        blogLable[i] = message[i].blog_lable;
+        blogAbs[i] = message[i].blog_abs;
+        blogTime[i] = message[i].blog_time;
+        add(blogID[i], blogName[i], blogAbs[i], blogTime[i]);
+      }
+
+      function add(blogID, blogName, blogAbs, blogTime) {
+        var listDiv = document.createElement('div');
+        listDiv.setAttribute("class", "listDiv");
+        var oDt = document.createElement('h3');
+        oDt.innerHTML = blogName;
+        var oDd1 = document.createElement('p');
+        oDd1.innerHTML = blogAbs;
+        oDd1.className = ("spen");
+        var oDd2 = document.createElement('p');
+        oDd2.innerHTML = "<button onclick='blogDelete()'>删除</button><button onclick='jump1(" + blogID + ")'>修改</button>" + blogTime;
+        oDd2.className = ("date");
+        var oDd3 = document.createElement('p');
+        oDd3.innerHTML = blogID;
+        oDd3.id = ("blogID");
+        div.appendChild(listDiv);
+        listDiv.appendChild(oDt);
+        listDiv.appendChild(oDd1);
+        listDiv.appendChild(oDd2);
+        listDiv.appendChild(oDd3);
+      }
+    }
+  }
+  xhr.send();
+}
+
 
 function blogModify() {
   var blogID = document.getElementById('blogID').value;
@@ -236,81 +289,31 @@ function getBlog() {
   }
 }
 
-function messagelist() {
-  var div = document.getElementById("list");
-  var content = Array();
-  var name = Array();
-  var date = Array();
-  var xhr = null;
-  if (window.XMLHttpRequest) {
-    xhr = new XMLHttpRequest();
-  } else {
-    xhr = new ActiveXObject('Microsoft.XMLHTTP');
-  }
-  xhr.open("get", "http://localhost/api/messageList", true);
-  xhr.onreadystatechange = function() {
-    if (xhr.readyState == 4 && xhr.status == 200) {
-      var data = xhr.responseText;
-      var message = JSON.parse(data)
-      for (var i = message.length - 1; i >= 0; i--) {
-        content[i] = message[i].content;
-        date[i] = message[i].date;
-        name[i] = message[i].uname;
-        add(name[i], content[i], date[i]);
-      }
-
-      function add(name, content, date) {
-        var listDiv = document.createElement('div');
-        listDiv.setAttribute("class", "listDiv");
-        var oDt = document.createElement('h4');
-        oDt.innerHTML = name + "说：";
-        var oDd1 = document.createElement('p');
-        oDd1.innerHTML = content;
-        oDd1.className = ("spen");
-        var oDd2 = document.createElement('p');
-        oDd2.innerHTML = date;
-        oDd2.className = ("date");
-        div.appendChild(listDiv);
-        listDiv.appendChild(oDt);
-        listDiv.appendChild(oDd1);
-        listDiv.appendChild(oDd2);
-      }
-    }
-  }
-  xhr.send();
-}
-
-function addmessage() {
-  var name = document.getElementById('username').value;
-  var lyConten = document.getElementById('lyConten').value;
-  if (isNull(name)) {
-    alert('署名不能为空');
-  } else {
-    if (isNull(lyConten)) {
-      alert('留言内容不能为空');
+function blogDelete() {
+  var r = confirm("确定要删除吗？")
+  if (r == true) {
+    var blogID = document.getElementById('blogID').innerHTML;
+    var xhr = null;
+    if (window.XMLHttpRequest) {
+      xhr = new XMLHttpRequest();
     } else {
-      var xhr = null;
-      if (window.XMLHttpRequest) {
-        xhr = new XMLHttpRequest();
-      } else {
-        xhr = new ActiveXObject('Microsoft.XMLHTTP');
-      }
-      xhr.open("post", "http://localhost/api/addMessage", "true");
-      xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
-      xhr.send("name=" + name + "&lyConten=" + lyConten);
-      xhr.onreadystatechange = function() {
-        if (xhr.readyState == 4 && xhr.status == 200) {
-          var data = xhr.responseText;
-          if (data) {
-            alert("留言成功！");
-            window.location.reload(true);
-            document.getElementById("username").value = null;
-            document.getElementById("lyConten").value = null;
-          } else {
-            alert('留言失败！');
-          }
+      xhr = new ActiveXObject('Microsoft.XMLHTTP');
+    }
+    xhr.open("post", "http://localhost/api/deleteBlog", "true");
+    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+    xhr.send("blogID=" + blogID);
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        var data = xhr.responseText;
+        if (data) {
+          alert("删除成功！")
+          window.location.reload(true);
         }
       }
     }
+  } else {
+    window.location.reload(true);
   }
+
+
 }

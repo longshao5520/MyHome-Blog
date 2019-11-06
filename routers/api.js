@@ -3,6 +3,7 @@ const fs = require('fs');
 const path = require('path');
 const bodyParser = require('body-parser');
 const db = require('../db/database');
+const marked = require('marked');
 const router = express.Router();
 
 var responseJSON = function(res, ret) {
@@ -68,7 +69,7 @@ router.post('/addMessage', urlencodedParser, function(req, res, next) {
   });
 });
 
-//添加留言
+//添加文章
 router.post('/addBlog', urlencodedParser, async function(req, res, next) {
   res.setHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
   var blogName = req.body.blogName;
@@ -92,7 +93,7 @@ router.post('/addBlog', urlencodedParser, async function(req, res, next) {
       // console.log(result)
       results = JSON.stringify(result)
       result = JSON.parse(results)
-      fs.writeFile(path.join(__dirname, '../public/blog/' + result[0].id + '.md'), blogCon, function(error) {
+      fs.writeFile(path.join(__dirname, '../../blog/' + result[0].id + '.md'), blogCon, function(error) {
         if (error) {
           console.log(error)
         } else {
@@ -104,6 +105,88 @@ router.post('/addBlog', urlencodedParser, async function(req, res, next) {
   });
 });
 
+//拉取文章内容
+router.post('/getBlog', urlencodedParser, async function(req, res, next) {
+  res.setHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+  var blogId = req.body.blogId;
+  db.pool.getConnection(function(err, connection) {
+    var blogData = {
+      blogName: '',
+      blogLable: '',
+      blogAbs: '',
+      blogCon: ''
+    }
+    var sql = "SELECT * from blog WHERE id=?;";
+    var addSqlParams = [blogId];
+    connection.query(sql, addSqlParams, function(err, result) {
+      if (err) throw err;
+      results = JSON.stringify(result)
+      result = JSON.parse(results)
+      fs.readFile(path.join(__dirname, '../../blog/' + blogId + '.md'), function(err, data) {
+        if (err) {
+          console.log("文件不存在！");
+          res.send("文件不存在！");
+        } else {
+          blogData.blogName = result[0].blog_name;
+          blogData.blogLable = result[0].blog_lable;
+          blogData.blogAbs = result[0].blog_abs;
+          blogData.blogCon = data.toString();
+          res.json(blogData);
+        }
+      });
+    });
+  });
+});
+
+//修改文章
+router.post('/modifyBlog', urlencodedParser, async function(req, res, next) {
+  res.setHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+  var blogID = req.body.blogID;
+  var blogName = req.body.blogName;
+  var blogLable = req.body.blogLable;
+  var blogAbs = req.body.blogAbs;
+  var blogCon = req.body.blogCon;
+  var date = new Date();
+  var day = date.getFullYear() + "年" + (date.getMonth() + 1) + "月" + date.getDate() + "日" + date.getHours() + "时" + date.getMinutes() + "分";
+  db.pool.getConnection(function(err, connection) {
+    var sql = "UPDATE blog SET blog_name=? ,blog_lable=?,blog_abs=?,blog_time=? WHERE id=?;";
+    var addSqlParams = [blogName, blogLable, blogAbs, day, blogID];
+    connection.query(sql, addSqlParams, function(err, result) {
+      if (err) throw err;
+
+      fs.writeFile(path.join(__dirname, '../../blog/' + blogID + '.md'), blogCon, function(error) {
+        if (error) {
+          console.log(error)
+        } else {
+          console.log('写入成功');
+          res.send("OK");
+        }
+      });
+      //   }
+      // });
+      connection.release();
+    });
+  });
+});
+
+//删除文章
+router.post('/deleteBlog', urlencodedParser, async function(req, res, next) {
+  var blogID = req.body.blogID;
+  console.log(blogID);
+  db.pool.getConnection(function(err, connection) {
+    var sql = "DELETE FROM blog WHERE id=?;";
+    var addSqlParams = [blogID];
+    connection.query(sql, addSqlParams, function(err, result) {
+      if (err) throw err;
+      fs.unlink(path.join(__dirname, '../../blog/' + blogID + '.md'), function(error) {
+        if (error) {
+          console.log(error);
+        }
+        res.json('OK');
+      });
+      connection.release();
+    });
+  });
+});
+
 module.exports = router;
-// 删除文件
-// fs.unlinkSync('./uploads/' + filename);
